@@ -549,6 +549,33 @@
 				<enable>false</enable>
             </control>
 	</include>
+
+	<!-- IMAX Graphic Logo Top Box -->
+    <include name="IMAX_Details_Row">
+        <include>Default_Visible_Fade</include>
+        <control type="group">
+            <visible>String.Contains(ListItem.FilenameAndPath,IMAX) | String.StartsWith(ListItem.VideoAspect,1.41) | String.StartsWith(ListItem.VideoAspect,1.42) | String.StartsWith(ListItem.VideoAspect,1.43) | String.StartsWith(ListItem.VideoAspect,1.44) | String.StartsWith(ListItem.VideoAspect,1.45) | String.StartsWith(ListItem.VideoAspect,1.88) | String.StartsWith(ListItem.VideoAspect,1.89) | String.StartsWith(ListItem.VideoAspect,1.90) | String.StartsWith(ListItem.VideoAspect,1.91) | String.StartsWith(ListItem.VideoAspect,1.92) | String.IsEqual(ListItem.VideoAspect,1.9)</visible>
+            <visible>![Skin.HasSetting(UseBingieInfoDialog) + [String.IsEqual(Window.Property(AdditionalInfo),similar) | String.IsEqual(Window.Property(AdditionalInfo),cast) | String.IsEqual(Window.Property(AdditionalInfo),trailers)]]</visible>
+            <posy>7</posy>
+            <height>36</height>
+            <width>112</width>
+            <!-- Sibling 1: Rounded Pill Border -->
+            <control type="image">
+                <width>112</width>
+                <height>36</height>
+                <texture colordiffuse="$INFO[Skin.String(BingieDetailsFlagColor)]" border="10">bingie/square-rounded2.png</texture>
+            </control>
+            <!-- Sibling 2: IMAX Logo PNG -->
+            <control type="image">
+                <posx>10</posx>
+                <posy>7</posy>
+                <width>92</width>
+                <height>22</height>
+                <aspectratio align="center" aligny="center">keep</aspectratio>
+                <texture>special://skin/extras/media/flags/bingie/imax.png</texture>
+            </control>
+        </control>
+    </include>
 	
 	<!-- HDR -->
     <include name="HDR_Details_Row">
