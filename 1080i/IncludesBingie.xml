@@ -572,7 +572,7 @@
                 <width>92</width>
                 <height>22</height>
                 <aspectratio align="center" aligny="center">keep</aspectratio>
-                <texture>special://skin/extras/media/flags/bingie/imax.png</texture>
+                <texture>special://skin/extras/media/imax.png</texture>
             </control>
         </control>
     </include>
