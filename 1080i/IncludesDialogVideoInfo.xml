@@ -2249,14 +2249,15 @@
                     <posx>145</posx>
                     <height>340</height>
 					<width>1775</width>
-					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">Close</onclick>
-					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(CloseInfoDialog,1,Home)</onclick>					
-                    <onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">RunScript(plugin.video.tmdb.bingie.helper,add_path=$INFO[ListItem.FolderPath],call_auto=1190)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdheader,$ESCINFO[Container($PARAM[id]).ListItem.Label],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdtextbox,$ESCINFO[Container($PARAM[id]).ListItem.Plot],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdrating,$ESCINFO[Container($PARAM[id]).ListItem.Rating],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdgenre,$ESCINFO[Container($PARAM[id]).ListItem.Genre],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdyear,$ESCINFO[Container($PARAM[id]).ListItem.Year],1122)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">ClearProperty(AdditionalInfo)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">ClearProperty(CloseInfoDialog,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(CloseInfoDialog,1,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">RunScript(special://skin/extras/scripts/local_info.py,dbid=$INFO[ListItem.DBID],dbtype=$INFO[ListItem.DBTYPE],title=$INFO[ListItem.Title],year=$INFO[ListItem.Year],folderpath=$INFO[ListItem.FolderPath])</onclick>
+					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdheader,$ESCINFO[Container(353).ListItem.Label],1122)</onclick>
+					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdtextbox,$ESCINFO[Container(353).ListItem.Plot],1122)</onclick>
+					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdrating,$ESCINFO[Container(353).ListItem.Rating],1122)</onclick>
+					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdgenre,$ESCINFO[Container(353).ListItem.Genre],1122)</onclick>
+					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdyear,$ESCINFO[Container(353).ListItem.Year],1122)</onclick>
 					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">ActivateWindow(1122)</onclick>
 					<onback>ClearProperty(AdditionalInfo)</onback>
 					<onup>ClearProperty(AdditionalInfo)</onup>
