@@ -260,15 +260,13 @@
 					<width>1670</width>
 					<height>340</height>
                     <left>131</left>
-					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">Close</onclick>
-					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(CloseInfoDialog,1,Home)</onclick>			
-                    <onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">RunScript(plugin.video.tmdb.bingie.helper,add_path=$INFO[ListItem.FolderPath],call_auto=1190)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdheader,$ESCINFO[Container($PARAM[id]).ListItem.Label],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdtextbox,$ESCINFO[Container($PARAM[id]).ListItem.Plot],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdrating,$ESCINFO[Container($PARAM[id]).ListItem.Rating],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdgenre,$ESCINFO[Container($PARAM[id]).ListItem.Genre],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdyear,$ESCINFO[Container($PARAM[id]).ListItem.Year],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">ActivateWindow(1122)</onclick>
+
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">ClearProperty(AdditionalInfo)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">ClearProperty(CloseInfoDialog,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(CloseInfoDialog,1,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">RunScript(special://skin/extras/scripts/local_info.py,dbid=$INFO[ListItem.DBID],dbtype=$INFO[ListItem.DBTYPE],title=$INFO[ListItem.Title],year=$INFO[ListItem.Year],folderpath=$INFO[ListItem.FolderPath])</onclick>
+					<visible allowhiddenfocus="true">String.IsEqual(Window.Property(AdditionalInfo),similar) + Integer.IsGreater(Container(352).NumItems,0)</visible>
+
 					<onback>ClearProperty(AdditionalInfo)</onback>
 					<onback>8000</onback>
 					<onback>SetFocus(62)</onback>
@@ -276,7 +274,6 @@
 					<preloaditems>4</preloaditems>
 					<orientation>horizontal</orientation>
 					<focusposition>0</focusposition>					
-					<visible allowhiddenfocus="true">String.IsEqual(Window.Property(AdditionalInfo),similar)</visible>
 					<animation effect="fade" start="0" end="100" time="400">Visible</animation>
                     <animation effect="fade" start="100" end="0" time="0" condition="Container(352).IsUpdating">Conditional</animation>
 					<animation effect="fade" start="0" end="100" time="400" condition="!Container(352).IsUpdating">Conditional</animation>
@@ -2332,54 +2329,46 @@
 			
 			<!--Similar List-->
 				<control type="fixedlist" id="352">
-					<top>-153</top>
-                    <posx>781</posx>
-                    <height>1280</height>
-                    <width>1100</width>
-					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">Close</onclick>
-					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(CloseInfoDialog,1,Home)</onclick>					
-                    <onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">RunScript(plugin.video.tmdb.bingie.helper,add_path=$INFO[ListItem.FolderPath],call_auto=1190)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdheader,$ESCINFO[Container($PARAM[id]).ListItem.Label],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdtextbox,$ESCINFO[Container($PARAM[id]).ListItem.Plot],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdrating,$ESCINFO[Container($PARAM[id]).ListItem.Rating],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdgenre,$ESCINFO[Container($PARAM[id]).ListItem.Genre],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(osdyear,$ESCINFO[Container($PARAM[id]).ListItem.Year],1122)</onclick>
-					<onclick condition="!String.IsEmpty(Window(Home).Property(SetCustomAddon))">ActivateWindow(1122)</onclick>
+					<include>Animation_Right_Delay_3</include>
+			        <top>720</top>
+					<width>1670</width>
+					<height>340</height>
+                    <left>131</left>
+
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">ClearProperty(AdditionalInfo)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">ClearProperty(CloseInfoDialog,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">SetProperty(CloseInfoDialog,1,Home)</onclick>
+					<onclick condition="String.IsEmpty(Window(Home).Property(SetCustomAddon))">RunScript(special://skin/extras/scripts/local_info.py,dbid=$INFO[ListItem.DBID],dbtype=$INFO[ListItem.DBTYPE],title=$INFO[ListItem.Title],year=$INFO[ListItem.Year],folderpath=$INFO[ListItem.FolderPath])</onclick>
+					<visible allowhiddenfocus="true">String.IsEqual(Window.Property(AdditionalInfo),similar) + Integer.IsGreater(Container(352).NumItems,0)</visible>
+
 					<onback>ClearProperty(AdditionalInfo)</onback>
 					<onback>8000</onback>
-					<onleft>3522</onleft>
-					<orientation>vertical</orientation>
-					<pagecontrol>60</pagecontrol>
-                    <preloaditems>2</preloaditems>
-                    <focusposition>1</focusposition>
-                    <include>ScrollTime</include>
-					<visible allowhiddenfocus="true">String.IsEqual(Window.Property(AdditionalInfo),similar)</visible>
-					<include>Animation_Right_DialogInfo</include>
-					<animation effect="fade" start="100" end="0" time="0" condition="Container(352).IsUpdating">Conditional</animation>
+					<onback>SetFocus(62)</onback>
+					<scrolltime tween="quadratic">500</scrolltime>
+					<preloaditems>4</preloaditems>
+					<orientation>horizontal</orientation>
+					<focusposition>0</focusposition>					
+					<animation effect="fade" start="0" end="100" time="400">Visible</animation>
+                    <animation effect="fade" start="100" end="0" time="0" condition="Container(352).IsUpdating">Conditional</animation>
 					<animation effect="fade" start="0" end="100" time="400" condition="!Container(352).IsUpdating">Conditional</animation>
-					<!-- itemlayout movies -->
-					<itemlayout width="1050" height="280">
-                        <!-- landscape content -->
-                        <include>View_352_Landscape_Defs</include>
-                        <!-- details content -->
-                        <include>View_352_Details_Defs</include>
-                    </itemlayout>
-                    <focusedlayout width="1050" height="280">
-                        <!-- panel/border -->
-                        <control type="image">
-							<visible>!Skin.HasSetting(EnableFixedFrameWidgets)</visible>
-                            <visible>Control.HasFocus(352)</visible>
-                            <height>episodes_thumb_height</height>
-                            <width>episodes_thumb_width</width>
-                            <texture border="5">diffuse/wide.png</texture>
-                            <colordiffuse>$INFO[Skin.String(ViewDetailsBorderFocusColor)]</colordiffuse>
-                            <include>thumbsborder_focused</include>
-                        </control>
-                        <!-- landscape content -->
-                        <include>View_352_Landscape_Defs</include>
-                        <!-- details content -->
-                        <include>View_352_Details_Defs_Focus</include>
-                    </focusedlayout>
+						<!-- itemlayout movies -->
+						<itemlayout height="347" width="238">
+			                <control type="group">
+								<width>240</width>
+								<height>340</height>
+								<include>PosterPanelBingieLayout</include>
+								<include>PosterTagOverlayBingieNoOverride</include>
+							</control>
+						</itemlayout>
+						<focusedlayout height="347" width="238">
+							<control type="group">
+								<width>240</width>
+								<height>340</height>
+								<include condition="!Skin.HasSetting(EnableFixedFrameWidgets)">PosterPanelBingieLayoutFocus</include>
+								<include condition="Skin.HasSetting(EnableFixedFrameWidgets)">PosterPanelBingieLayout</include>
+								<include>PosterTagOverlayBingieNoOverride</include>
+							</control>
+						</focusedlayout>
 					<content>$VAR[Path_Similar]</content>
 				</control>
 		
