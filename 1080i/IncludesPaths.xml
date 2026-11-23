@@ -125,9 +125,11 @@
     </variable>
 	
 	<variable name="Path_Collection">
-		<value condition="!String.IsEqual(ListItem.Path,plugin://plugin.video.tmdb.bingie.helper/) + String.IsEqual(ListItem.DBType,movie) + [!String.IsEmpty(ListItem.Set) | !String.IsEmpty(Container(17195).ListItem.Set)] + !Skin.HasSetting(VideoInfoButtonCollection)">plugin://plugin.video.tmdb.bingie.helper?info=collection&amp;tmdb_type=collection&amp;query=$VAR[Path_Set]&amp;nextpage=false&amp;cacheonly=true&amp;reload=$INFO[Window(Home).Property(TMDbBingieHelper.Widgets.Reload)]</value>
-        <value condition="String.IsEqual(ListItem.Path,plugin://plugin.video.tmdb.bingie.helper/) + String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.Set) + !Skin.HasSetting(VideoInfoButtonCollection)">plugin://plugin.video.tmdb.bingie.helper?info=collection&amp;tmdb_type=collection&amp;tmdb_id=$INFO[ListItem.Property(set.tmdb_id)]&amp;nextpage=false&amp;cacheonly=true&amp;reload=$INFO[Window(Home).Property(TMDbBingieHelper.Widgets.Reload)]</value>
-    </variable>
+		<!-- <value condition="!String.IsEqual(ListItem.Path,plugin://plugin.video.tmdb.bingie.helper/) + String.IsEqual(ListItem.DBType,movie) + [!String.IsEmpty(ListItem.Set) | !String.IsEmpty(Container(17195).ListItem.Set)] + !Skin.HasSetting(VideoInfoButtonCollection)">plugin://plugin.video.tmdb.bingie.helper?info=collection&amp;tmdb_type=collection&amp;query=$VAR[Path_Set]&amp;nextpage=false&amp;cacheonly=true&amp;reload=$INFO[Window(Home).Property(TMDbBingieHelper.Widgets.Reload)]</value>
+        <value condition="String.IsEqual(ListItem.Path,plugin://plugin.video.tmdb.bingie.helper/) + String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.Set) + !Skin.HasSetting(VideoInfoButtonCollection)">plugin://plugin.video.tmdb.bingie.helper?info=collection&amp;tmdb_type=collection&amp;tmdb_id=$INFO[ListItem.Property(set.tmdb_id)]&amp;nextpage=false&amp;cacheonly=true&amp;reload=$INFO[Window(Home).Property(TMDbBingieHelper.Widgets.Reload)]</value> -->
+    	<value condition="!String.IsEqual(ListItem.Path,plugin://plugin.video.tmdb.bingie.helper/) + String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(ListItem.SetID) + !Skin.HasSetting(VideoInfoButtonCollection)">videodb://movies/sets/$INFO[ListItem.SetID]/</value>
+		<value condition="!String.IsEqual(ListItem.Path,plugin://plugin.video.tmdb.bingie.helper/) + String.IsEqual(ListItem.DBType,movie) + !String.IsEmpty(Container(17195).ListItem.SetID) + !Skin.HasSetting(VideoInfoButtonCollection)">videodb://movies/sets/$INFO[Container(17195).ListItem.SetID]/</value>
+	</variable>
 	
 	<variable name="Path_Set">
 		<value condition="!String.IsEmpty(ListItem.Set)">$INFO[ListItem.Set]</value>
