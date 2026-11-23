@@ -114,7 +114,10 @@
     </variable>
 	
 	<variable name="Path_Similar">
-        <value condition="Control.HasFocus(62) | String.IsEqual(Window.Property(AdditionalInfo),similar)">plugin://plugin.video.tmdb.bingie.helper?info=recommendations&amp;nextpage=false&amp;length=1$VAR[Path_Param_Type,&amp;,]$VAR[Path_Param_Query]&amp;reload=$INFO[Window(Home).Property(TMDbBingieHelper.Widgets.Reload)]</value>
+        <!-- <value condition="Control.HasFocus(62) | String.IsEqual(Window.Property(AdditionalInfo),similar)">plugin://plugin.video.tmdb.bingie.helper?info=recommendations&amp;nextpage=false&amp;length=1$VAR[Path_Param_Type,&amp;,]$VAR[Path_Param_Query]&amp;reload=$INFO[Window(Home).Property(TMDbBingieHelper.Widgets.Reload)]</value> -->
+		<value condition="[Control.HasFocus(62) | String.IsEqual(Window.Property(AdditionalInfo),similar)] + [Container.Content(movies) | String.IsEqual(ListItem.DBTYPE,movie)] + !String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=movie</value>
+
+		<value condition="[Control.HasFocus(62) | String.IsEqual(Window.Property(AdditionalInfo),similar)] + [Container.Content(tvshows) | String.IsEqual(ListItem.DBTYPE,tvshow)] + !String.IsEmpty(ListItem.DBID)">plugin://script.embuary.helper/?info=getsimilar&amp;dbid=$INFO[ListItem.DBID]&amp;type=tvshow</value>
     </variable>
 	
 	<variable name="Path_Reviews">
